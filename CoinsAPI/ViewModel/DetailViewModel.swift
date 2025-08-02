@@ -8,10 +8,11 @@
 import Foundation
 class DetailViewModel:ObservableObject {
     @Published var Coindetail:CoinsDetailModel?
-    let Details = ServiceModel()
+    let Details : ServiceModel
     @Published var CoinId : String
-    init(CoinId:String){
+    init(CoinId:String,Details:ServiceModel){
         self.CoinId = CoinId
+        self.Details = Details
     }
     
     func fetchDetail()async throws{

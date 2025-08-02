@@ -9,10 +9,11 @@ import SwiftUI
 
 struct CoinsDetailView: View {
     let coin:Coins
+    
     @ObservedObject var ViewModel: DetailViewModel
-    init(coin: Coins) {
+    init(coin: Coins,Details:ServiceModel) {
         self.coin = coin
-        ViewModel = DetailViewModel(CoinId: coin.id)
+        ViewModel = DetailViewModel(CoinId: coin.id, Details: Details)
     }
     var body: some View {
         VStack(alignment:.leading,spacing: 10){
