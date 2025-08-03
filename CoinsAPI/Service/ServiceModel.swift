@@ -6,6 +6,10 @@
 //
 
 import Foundation
+protocol CoinsDataProtocol{
+    func getCoinsData()async throws -> [Coins]
+    func CoinsDetailView(id:String)async throws -> CoinsDetailModel?
+}
 
 protocol httpdownloader {
     func fetchdata<T:Decodable>(as type : T.Type , endpoint:String)async throws -> T
@@ -33,7 +37,7 @@ extension httpdownloader{
 }
 
 
-class ServiceModel: httpdownloader {
+class ServiceModel: CoinsDataProtocol, httpdownloader {
    
     func CoinsDetailView(id : String) async throws -> CoinsDetailModel?{
         let urlstring =  "https://api.coingecko.com/api/v3/coins/\(id)"

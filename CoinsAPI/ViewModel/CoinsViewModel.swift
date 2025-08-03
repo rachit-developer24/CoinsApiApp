@@ -8,8 +8,8 @@
 import Foundation
 class CoinsViewModel: ObservableObject {
     @Published var coins: [Coins] = []
-    let Service:ServiceModel
-    init(Service:ServiceModel){
+    let Service:CoinsDataProtocol
+    init(Service:CoinsDataProtocol){
         self.Service = Service
         Task {
             await fetchCoins()

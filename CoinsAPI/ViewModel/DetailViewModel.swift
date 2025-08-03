@@ -8,9 +8,9 @@
 import Foundation
 class DetailViewModel:ObservableObject {
     @Published var Coindetail:CoinsDetailModel?
-    let Details : ServiceModel
+    let Details : CoinsDataProtocol
     @Published var CoinId : String
-    init(CoinId:String,Details:ServiceModel){
+    init(CoinId:String,Details:CoinsDataProtocol){
         self.CoinId = CoinId
         self.Details = Details
     }
