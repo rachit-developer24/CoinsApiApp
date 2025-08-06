@@ -8,9 +8,10 @@
 import Foundation
 
 class MockDataTesting:CoinsDataProtocol {
+    var mockData:Data?
     func getCoinsData() async throws -> [Coins] {
-        let bitcoin = [Coins(id: "1", name: "bitcoin", symbol: "btc")]
-        return bitcoin
+        let coins = try JSONDecoder().decode([Coins].self, from:mockData ?? TestCoinData )
+        return coins
     }
     
     func CoinsDetailView(id: String) async throws -> CoinsDetailModel? {

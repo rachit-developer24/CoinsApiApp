@@ -8,6 +8,7 @@
 import Foundation
 class CoinsViewModel: ObservableObject {
     @Published var coins: [Coins] = []
+    @Published var errorMessage: String?
     let Service:CoinsDataProtocol
     init(Service:CoinsDataProtocol){
         self.Service = Service
@@ -19,7 +20,7 @@ class CoinsViewModel: ObservableObject {
         do{
             self.coins = try await Service.getCoinsData()
         }catch{
-            print(error.localizedDescription)
+            self.errorMessage = error.localizedDescription
         }
     }
 }
