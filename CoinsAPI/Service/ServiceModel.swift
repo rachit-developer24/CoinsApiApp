@@ -31,7 +31,7 @@ extension httpdownloader{
             let details = try JSONDecoder().decode(T.self, from: data)
             return details
         }catch{
-            throw CoinApIError.invalidData
+            throw error as? CoinApIError ?? .unknownerror
         }
     }
 }

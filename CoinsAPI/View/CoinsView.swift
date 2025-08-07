@@ -29,6 +29,11 @@ struct CoinsView: View {
             }
             .navigationTitle(Text("Coins"))
         }
+        .overlay{
+            if let error = ViewModel.errorMessage{
+                Text(error)
+            }
+        }
        
     }
 }

@@ -20,7 +20,11 @@ class CoinsViewModel: ObservableObject {
         do{
             self.coins = try await Service.getCoinsData()
         }catch{
-            self.errorMessage = error.localizedDescription
+            if let error = error as? CoinApIError{
+                self.errorMessage = error.description
+            }else{
+                self.errorMessage = error.localizedDescription
+            }
         }
     }
 }
